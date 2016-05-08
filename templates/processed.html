@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation Result</title>
+    <!-- linking a css style sheet -->
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <!-- linking a javascript file -->
+    <!-- <script type="text/javascript" src='{{ url_for('static', filename='js/my_script.js') }}'></script> -->
+</head>
+<body>
+    <div id="wrapper">
+        {% if session['user'] %}
+            <h4>Email Address Entered:</h4>
+            <h5>The email address you entered <em style="color: red">{{session['user-email']}}</em> is a VALID email address! Thank you!</h5>
+        {% endif %}
+        <table>
+            <thead>
+                List of Users:
+            </thead>
+            <tr>
+                <td></td>
+                <td>
+                    <ol>
+                        {% for row in user_list %}
+                        <li>{{row['first_name']}} {{row['last_name'] }} {{row['email']}}<span> {{row['created_at']}}</span>
+                        {% endfor %}
+                    </ol>
+                </td>
+            </tr>
+        </table>
+        
+        <a href="{{ url_for('index') }}"> Home Page </a> 
+        
+    </div>
+</body>
+</html>
